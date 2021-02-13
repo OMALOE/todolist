@@ -1,0 +1,59 @@
+﻿<Window x:Class="ToDoList_UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoList_UI"
+        mc:Ignorable="d"
+        Title="ToDo List" Height="450" Width="800" Background="WhiteSmoke" Icon="Drawable/todo_logo.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="ToDo List!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
+        <Separator Grid.Row="0" Width="300" VerticalAlignment="Bottom"/>
+        <StackPanel Grid.Row="1" x:Name="DaysPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+            <DatePicker x:Name="DatePickerControl" Width="150" Height="25" SelectedDateChanged="RenderTodos"/>
+            <Button Margin="10,0,0,0" Content="Add" Width="25" Height="25" Click="onAddPressed"/>
+            <Button Margin="10,0,0,0" Content="Logout" Width="50" Height="25" Click="onLogoutPressed"/>
+        </StackPanel>
+        <Separator Grid.Row="1" Width="300"  VerticalAlignment="Bottom" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="{Binding ActualWidth, ElementName=TodosPanel}"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="ActualDaysPanel" CornerRadius="15" Background="White" MinHeight="150" Height="auto" Width="120" VerticalAlignment="Top" Margin="0,10,0,0">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="Actual days" Margin="5,5,0,0" FontSize="13"/>
+                    <ListBox Name="ActualDaysListBox" Background="Transparent" BorderThickness="0">
+
+                    </ListBox>
+                </StackPanel>
+                
+            </Border>
+            <Border Grid.Column="1" Margin="0,10,0,0" CornerRadius="15" Background="White" Width="350" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0"/>
+                </Border.Effect>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <StackPanel  x:Name="TodosPanel"  >
+
+
+                    </StackPanel>
+                </ScrollViewer>
+                
+            </Border>
+        </Grid>
+        
+        
+        
+    </Grid>
+</Window>

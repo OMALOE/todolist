@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ToDoList_UI.Components.ToDoItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoList_UI.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="300" Width="300" Height="auto">
+    <Border x:Name="TodoBorder" CornerRadius="5" BorderThickness="1" Background="White" Padding="5" >
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="TaskCheckBox" Grid.Column="0" Visibility="Hidden" Checked="Checked" Unchecked="Unchecked" IsChecked="False"/>
+                <TextBox x:Name="TodoName" Grid.Column="0" Text="Type todoname" HorizontalAlignment="Left" Margin="25,0,0,0" MinWidth="30"/>
+                <Button x:Name="DoneButton" Click="onDonePressed" Content="OK" FontSize="7" Grid.Column="1" Width="15" Height="15" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+                <Button x:Name="DeleteButton" Click="Delete" Content="Del" FontSize="7" Grid.Column="1" Width="15" Height="15" HorizontalAlignment="Right" Visibility="Hidden"/>
+            </Grid>
+            <StackPanel Grid.Row="1">
+                <TextBox x:Name="TodoDescription" Text="type description" TextWrapping="Wrap" IsReadOnly="False" Margin="0,2,0,0" FontSize="11" Foreground="DarkGray"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+    
+</UserControl>
